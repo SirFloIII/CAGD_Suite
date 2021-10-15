@@ -10,7 +10,7 @@
 int main()
 {
 	CAGD_Suite demo;
-	if (demo.Construct(SCREENHEIGHT * 16 / 9, SCREENHEIGHT, 4, 4, true, true))
+	if (demo.Construct(SCREENHEIGHT * 16 / 9, SCREENHEIGHT, 2, 2, true, true))
 		demo.Start();
 
 	return 0;

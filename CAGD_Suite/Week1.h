@@ -22,7 +22,7 @@ class BSP_1_2 : public ExerciseProblem
 {
 private:
 	PointPtr A, B, C, D, M;
-	SliderPtr x;
+	SliderFloatPtr x;
 	BezierPtr b;
 	bool locked = true;
 
@@ -51,7 +51,7 @@ Kreisapproximation:             \n\
 ";
 
 
-		x = std::make_shared<Slider>(0.6666, 0, 1, olc::vi2d(40, 210), 100, "x", olc::WHITE);
+		x = std::make_shared<Slider<float>>(0.6666, 0, 1, olc::vi2d(40, 210), 100, "x", olc::WHITE);
 
 		A = std::make_shared<Point>(1, 0);
 		B = std::make_shared<Point>(1, x->value);
@@ -83,6 +83,28 @@ Kreisapproximation:             \n\
 	}
 };
 
+class BSP_1_3 : public ExerciseProblem
+{
+private:
+	SliderIntPtr n, i;
+	BernsteinPolynomPtr f, g;
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		return { f = std::make_shared<BernsteinPolynom>(0, 0, olc::RED),
+			     g = std::make_shared<BernsteinPolynom>(0, 0, olc::GREEN),
+			     n = std::make_shared<Slider<int>>(3, 0, 12, olc::vi2d(40, 128), 100, "n", olc::WHITE),
+				 i = std::make_shared<Slider<int>>(2, 0, 10, olc::vi2d(40, 128+32), 100, "i", olc::WHITE)
+		};
+	}
+
+	void eachFrame(float dt) {
+		i->setMax(n->value);
+		f->n = n->value;
+		g->n = n->value;
+		f->i = i->value;
+		g->i = n->value - i->value;
+	}
+};
 
 
 class BSP_1_5 : public ExerciseProblem
@@ -108,10 +130,10 @@ Bezierkurve mit singulaerem Punkt: \n\n\
     1/4 * ((C-A) + (D-B)) \
 ";
 
-		PointPtr A = std::make_shared<Point>(-3, -1, "A");
-		PointPtr B = std::make_shared<Point>(3, 1, "B");
-		PointPtr C = std::make_shared<Point>(1, -3, "C");
-		PointPtr D = std::make_shared<Point>(-1, 3, "D");
+		PointPtr A = std::make_shared<Point>(0, -1, "A");
+		PointPtr B = std::make_shared<Point>(4, 1, "B");
+		PointPtr C = std::make_shared<Point>(3, -3, "C");
+		PointPtr D = std::make_shared<Point>(1, 3, "D");
 
 		return { std::make_shared<Line>(A, B, olc::DARK_GREY),
 				 std::make_shared<Line>(B, C, olc::DARK_GREY),
@@ -128,7 +150,7 @@ private:
 	PointPtr p0;
 	PointPtr p1;
 	PointPtr pt;
-	SliderPtr t;
+	SliderFloatPtr t;
 
 	PointPtr A;
 	PointPtr B;
@@ -146,7 +168,7 @@ def fitBezier(P0, Pt, P1, t):			\n\
 		p0 = std::make_shared<Point>(3, -2, "P0");
 		p1 = std::make_shared<Point>(4, 3, "P1");
 		pt = std::make_shared<Point>(-2, 1, olc::GREEN, "Pt");
-		t = std::make_shared<Slider>(0.6, 0, 1, olc::vi2d(40, 128), 100, "t", olc::WHITE);
+		t = std::make_shared<Slider<float>>(0.6, 0, 1, olc::vi2d(40, 128), 100, "t", olc::WHITE);
 
 		A = std::make_shared<Point>(0, 0, "A");
 		B = std::make_shared<Point>(0, 0, olc::YELLOW, "B");
