@@ -3,11 +3,93 @@
 #include "GeometryCollection.h"
 
 
+
+class BSP_1_1 : public ExerciseProblem
+{
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		PointPtr A = std::make_shared<Point>(1, 0, olc::WHITE);
+		PointPtr B = std::make_shared<Point>(1, 1, olc::WHITE);
+		PointPtr C = std::make_shared<Point>(0, 1, olc::WHITE);
+		PointPtr S = std::make_shared<Point>(0, 0, olc::VERY_DARK_GREY);
+		return { std::make_shared<Circle>(S, 1),
+				std::make_shared<Bezier>(std::vector<PointPtr>({A, B, C})),
+				A, B, C };
+	}
+};
+
+class BSP_1_2 : public ExerciseProblem
+{
+private:
+	PointPtr A, B, C, D, M;
+	SliderPtr x;
+	BezierPtr b;
+	bool locked = true;
+
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "\
+Kreisapproximation:             \n\
+                                \n\
+  b(1/2; 0, x, 1, 1) =          \n\
+                                \n\
+  1/8 * ( 1 * 0 +               \n\
+          3 * x +               \n\
+          3 * 1 +               \n\
+          1 * 1 ) =             \n\
+                                \n\
+  3/8 * x + 4/8                 \n\
+                                \n\
+      !                         \n\
+      =                         \n\
+                                \n\
+  sqrt2 / 2                     \n\
+                                \n\
+    ===>                        \n\
+                                \n\
+  x = 4 * (sqrt2 - 1) / 3       \n\
+";
+
+
+		x = std::make_shared<Slider>(0.6666, 0, 1, olc::vi2d(40, 210), 100, "x", olc::WHITE);
+
+		A = std::make_shared<Point>(1, 0);
+		B = std::make_shared<Point>(1, x->value);
+		C = std::make_shared<Point>(x->value, 1);
+		D = std::make_shared<Point>(0, 1);
+		M = std::make_shared<Point>(0, 0, olc::YELLOW);
+
+		return { std::make_shared<Circle>(std::make_shared<Point>(0, 0), 1),
+				 b = std::make_shared<Bezier>(std::vector<PointPtr>({A, B, C, D})),
+				A, B, C, D, M, x };
+	}
+
+	void eachFrame(float dt) override {
+		if (locked) {
+			A->pos = { 1,0 };
+			B->pos = { 1,x->value };
+			C->pos = { x->value,1 };
+			D->pos = { 0,1 };
+		}
+		M->pos = b->evaluate(0.5);
+	}
+
+	void onSPACE(float dt) override {
+		x->value = 4 * (pow(2, 0.5) - 1) / 3;
+	}
+
+	void onK1(float dt) override {
+		locked = !locked;
+	}
+};
+
+
+
 class BSP_1_5 : public ExerciseProblem
 {
 public:
 	std::vector<GeometryObjPtr> doSetup() override {
-	description = "\
+		description = "\
 Bezierkurve mit singulaerem Punkt: \n\n\
   Wenn die 4 Handles einer     \n\
   3-Bezierkurve in einem       \n\
@@ -26,16 +108,16 @@ Bezierkurve mit singulaerem Punkt: \n\n\
     1/4 * ((C-A) + (D-B)) \
 ";
 
-		PointPtr A = std::make_shared<Point>( -3, -1, "A" );
-		PointPtr B = std::make_shared<Point>(  3,  1, "B" );
-		PointPtr C = std::make_shared<Point>(  1, -3, "C" );
-		PointPtr D = std::make_shared<Point>( -1,  3, "D" );
+		PointPtr A = std::make_shared<Point>(-3, -1, "A");
+		PointPtr B = std::make_shared<Point>(3, 1, "B");
+		PointPtr C = std::make_shared<Point>(1, -3, "C");
+		PointPtr D = std::make_shared<Point>(-1, 3, "D");
 
 		return { std::make_shared<Line>(A, B, olc::DARK_GREY),
 				 std::make_shared<Line>(B, C, olc::DARK_GREY),
 				 std::make_shared<Line>(C, D, olc::DARK_GREY),
 				 std::make_shared<Bezier>(std::vector<PointPtr>({ A, B, C, D })),
-				 A, B, C, D};
+				 A, B, C, D };
 	}
 };
 
@@ -113,7 +195,7 @@ public:
 				 std::make_shared<Line>(A, A2, olc::DARK_RED),
 				 std::make_shared<Line>(B, B2, olc::DARK_RED),
 				 std::make_shared<Line>(C, C2, olc::DARK_RED),
-				 A, B, C, A2, B2, C2, S};
+				 A, B, C, A2, B2, C2, S };
 	}
 	void eachFrame(float dt) override {
 		A2->pos = 0.5 * (B->pos + C->pos);

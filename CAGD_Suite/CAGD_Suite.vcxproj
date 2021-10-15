@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CAGD_Suite.cpp" />
+    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="ExerciseCollection.h" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
@@ -148,10 +149,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bezier.h" />
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="GeometryCollection.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Math.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Slider.h" />
     <ClInclude Include="Week1.h" />
     <ClInclude Include="CAGD_Suite.h" />

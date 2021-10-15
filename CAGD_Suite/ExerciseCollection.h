@@ -3,10 +3,14 @@
 #include "CAGD_Suite.h"
 
 #include "Week1.h"
-#include "resource.h"
+
 
 ExerciseProblem* getExerciseByID(int id) {
 	switch (id) {
+	case(101):
+		return new BSP_1_1();
+	case(102):
+		return new BSP_1_2();
 	case(105):
 		return new BSP_1_5();
 	case(106):
@@ -27,8 +31,8 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Reset"].SetID(001);
 
 	mo["main"]["Week  1"].SetTable(1, 9);
-	mo["main"]["Week  1"]["Exercise 1"].SetID(101).Enable(false);
-	mo["main"]["Week  1"]["Exercise 2"].SetID(102).Enable(false);
+	mo["main"]["Week  1"]["Exercise 1"].SetID(101);
+	mo["main"]["Week  1"]["Exercise 2"].SetID(102);
 	mo["main"]["Week  1"]["Exercise 3"].SetID(103).Enable(false);
 	mo["main"]["Week  1"]["Exercise 4"].SetID(104).Enable(false);
 	mo["main"]["Week  1"]["Exercise 5"].SetID(105);

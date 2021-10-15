@@ -39,6 +39,9 @@
     <ClCompile Include="ExerciseCollection.h">
       <Filter>Excercises</Filter>
     </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>GeometryObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="olcPixelGameEngine.h">
@@ -77,11 +80,11 @@
     <ClInclude Include="Slider.h">
       <Filter>GeometryObjects</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="Math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Circle.h">
+      <Filter>GeometryObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
