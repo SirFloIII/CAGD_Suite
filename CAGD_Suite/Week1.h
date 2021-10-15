@@ -90,6 +90,18 @@ private:
 	BernsteinPolynomPtr f, g;
 public:
 	std::vector<GeometryObjPtr> doSetup() override {
+		description = "\
+Symmetrie der Bernstein-Polynome:        \n\
+                                         \n\
+  b(n, i, t) =                           \n\
+                                         \n\
+  (n choose i) t^i (1-t)^(n-i)           \n\
+                                         \n\
+                                         \n\
+  b(n, n-i, 1-t) =                       \n\
+                                         \n\
+  (n choose n-i) (1-t)^(n-i) t^i         \n\
+		";
 		return { f = std::make_shared<BernsteinPolynom>(0, 0, olc::RED),
 			     g = std::make_shared<BernsteinPolynom>(0, 0, olc::GREEN),
 			     n = std::make_shared<Slider<int>>(3, 0, 12, olc::vi2d(40, 128), 100, "n", olc::WHITE),
