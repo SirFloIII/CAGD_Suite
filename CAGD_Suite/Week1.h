@@ -51,7 +51,7 @@ Kreisapproximation:             \n\
 ";
 
 
-		x = std::make_shared<Slider<float>>(0.6666, 0, 1, olc::vi2d(40, 210), 100, "x", olc::WHITE);
+		x = std::make_shared<Slider<float>>(0.6666, 0, 1, 24, "x");
 
 		A = std::make_shared<Point>(1, 0);
 		B = std::make_shared<Point>(1, x->value);
@@ -104,8 +104,8 @@ Symmetrie der Bernstein-Polynome:        \n\
 		";
 		return { f = std::make_shared<BernsteinPolynom>(0, 0, olc::RED),
 			     g = std::make_shared<BernsteinPolynom>(0, 0, olc::GREEN),
-			     n = std::make_shared<Slider<int>>(3, 0, 12, olc::vi2d(40, 128), 100, "n", olc::WHITE),
-				 i = std::make_shared<Slider<int>>(2, 0, 10, olc::vi2d(40, 128+32), 100, "i", olc::WHITE)
+			     n = std::make_shared<Slider<int>>(3, 0, 12, 16, "n"),
+				 i = std::make_shared<Slider<int>>(2, 0, 10, 20, "i")
 		};
 	}
 
@@ -115,6 +115,53 @@ Symmetrie der Bernstein-Polynome:        \n\
 		g->n = n->value;
 		f->i = i->value;
 		g->i = n->value - i->value;
+	}
+};
+
+class BSP_1_4 : public ExerciseProblem
+{
+private:
+	PointPtr A;
+	SliderIntPtr n, i;
+	BernsteinPolynomPtr f;
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "\
+Maxima der Bernstein-Polynome:        \n\
+                                      \n\
+  B(n, i, t) =                        \n\
+                                      \n\
+  (n choose i) * t^i * (1-t)^(n-i) =  \n\
+                                      \n\
+                                      \n\
+  d/dt B(n, i, t) =                   \n\
+                                      \n\
+  (n choose i) * (                    \n\
+      i * t^(i-1) * (1-t)^(n-i) -     \n\
+      (n-i) * t^i * (1-t)^(n-i-1)     \n\
+  ) =                                 \n\
+                                      \n\
+  (n choose i) *                      \n\
+  t^(i-1) * (1-t)^(n-i-1) * (         \n\
+      i * (1-t) - (n-i) * t           \n\
+  )                                   \n\
+    !                                 \n\
+    = 0                               \n\
+		";
+		return { f = std::make_shared<BernsteinPolynom>(0, 0, olc::RED),
+				 A = std::make_shared<Point>(0,0,olc::YELLOW, "B(i/n)"),
+				 n = std::make_shared<Slider<int>>(3, 0, 12, 26, "n"),
+				 i = std::make_shared<Slider<int>>(2, 0, 10, 30, "i")
+		};
+	}
+
+	void eachFrame(float dt) {
+		i->setMax(n->value);
+		f->n = n->value;
+		f->i = i->value;
+
+		A->pos = { (float)i->value / n->value, Bernstein(n->value, i->value, (float)i->value / n->value) };
+
 	}
 };
 
@@ -170,17 +217,17 @@ private:
 public:
 	std::vector<GeometryObjPtr> doSetup() override {
 		description = "\
-def fitBezier(P0, Pt, P1, t):			\n\
-    A = (0, 0)							\n\
-    B = bezier(t, P0, A, P1)			\n\
-    A = (Pt - B) / bernstein(2, 1, t)	\n\
-    return P0, A, P1					\n\
+def fitBezier(P0, Pt, P1, t):			\n\n\
+  A = (0, 0)							\n\n\
+  B = bezier(t, P0, A, P1)			\n\n\
+  A = (Pt - B) / bernstein(2, 1, t)	\n\n\
+  return P0, A, P1					\n\n\
 ";
 
 		p0 = std::make_shared<Point>(3, -2, "P0");
 		p1 = std::make_shared<Point>(4, 3, "P1");
 		pt = std::make_shared<Point>(-2, 1, olc::GREEN, "Pt");
-		t = std::make_shared<Slider<float>>(0.6, 0, 1, olc::vi2d(40, 128), 100, "t", olc::WHITE);
+		t = std::make_shared<Slider<float>>(0.6, 0, 1, 16, "t");
 
 		A = std::make_shared<Point>(0, 0, "A");
 		B = std::make_shared<Point>(0, 0, olc::YELLOW, "B");
