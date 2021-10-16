@@ -103,8 +103,8 @@ Symmetrie der Bernstein-Polynome:        \n\
   (n choose n-i) (1-t)^(n-i) t^i         \n\
 		";
 		return { f = std::make_shared<BernsteinPolynom>(0, 0, olc::RED),
-			     g = std::make_shared<BernsteinPolynom>(0, 0, olc::GREEN),
-			     n = std::make_shared<Slider<int>>(3, 0, 12, 16, "n"),
+				 g = std::make_shared<BernsteinPolynom>(0, 0, olc::GREEN),
+				 n = std::make_shared<Slider<int>>(3, 0, 12, 16, "n"),
 				 i = std::make_shared<Slider<int>>(2, 0, 10, 20, "i")
 		};
 	}
@@ -247,6 +247,52 @@ def fitBezier(P0, Pt, P1, t):			\n\n\
 	void onK1Held(float dt) override {
 		auto diff = pt->pos - B->pos;
 		A->pos += diff / Bernstein(2, 1, t->value) * dt;
+	}
+};
+
+
+class BSP_1_7 : public ExerciseProblem
+{
+private:
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "\
+Kreis als Bezierkurve:        \n\
+                              \n\
+  Angenommen b(t) ist eine    \n\
+  Bezier-Parametrisierung     \n\
+  des Kreises, also ein       \n\
+  Polynom in t von Grad <n.   \n\
+                              \n\
+    1 = norm(b(t))^2 =        \n\
+                              \n\
+    b(t)_x^2 + b(t)_y^2       \n\
+                              \n\
+  Die Summanden sind Polynome \n\
+  von Grad <2n und positiv,   \n\
+  aber auch < 1.              \n\
+                              \n\
+  Nicht konstante Polynome    \n\
+  sind unbeschraenkt, also    \n\
+  muss b(t)_x und b(t)_y      \n\
+  konstant sein.              \n\
+		";
+
+		std::vector<GeometryObjPtr> out = {};
+		std::vector<PointPtr> args = {};
+		PointPtr B = std::make_shared<Point>(1, 0);
+		out.push_back(B);
+		args.push_back(B);
+		for (int i = 1; i < 8; i++) {
+			auto A = std::make_shared<Point>((1.414 + 0.15) * cos(i * 3.1415 / 4) - 0.15,
+				                             (1.414 + 0.15) * sin(i * 3.1415 / 4));
+			out.push_back(A);
+			args.push_back(A);
+		}
+		args.push_back(B);
+		out.push_back(std::make_shared<Bezier>(args));
+		out.push_back(std::make_shared<Circle>(std::make_shared<Point>(0, 0), 1));
+		return out;
 	}
 };
 
