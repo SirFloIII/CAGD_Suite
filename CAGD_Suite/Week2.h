@@ -2,6 +2,42 @@
 #include "ExerciseProblem.h"
 #include "GeometryCollection.h"
 
+
+
+class BSP_2_15 : public ExerciseProblem
+{
+private:
+	SliderIntPtr n, i;
+	BernsteinPolynomPtr f;
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "\
+def Bernstein(n, i, t):                                                \n\
+    return Binom(n, i) * t**i * (n-t)**(n-i)                           \n\
+                                                                       \n\
+def Binom(n, i):                                                       \n\
+    return Factorial(n) / (Factorial(i) * Factorial(n-i))              \n\
+                                                                       \n\
+def Factorial(k):                                                      \n\
+    if k == 0: return 1                                                \n\
+    return k * Factorial(k-1)                                          \n\
+";
+		
+		return { f = std::make_shared<BernsteinPolynom>(0, 0, olc::RED),
+				 n = std::make_shared<Slider<int>>(3, 0, 12, 16, "n"),
+				 i = std::make_shared<Slider<int>>(2, 0, 10, 20, "i")
+		};
+	}
+
+	void eachFrame(float dt) {
+		i->setMax(n->value);
+		f->n = n->value;
+		f->i = i->value;
+	}
+};
+
+
+
 class BSP_2_16 : public ExerciseProblem
 {
 private:
