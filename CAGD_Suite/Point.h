@@ -34,6 +34,8 @@ public:
 		pos = transform.ScreenToWorld(mousePos);
 	}
 
+	operator olc::vf2d() const { return pos; }
+
 };
 
 typedef std::shared_ptr<Point>  PointPtr;

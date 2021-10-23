@@ -6,4 +6,5 @@
 #include "Slider.h"
 #include "Circle.h"
 #include "BernsteinPolynom.h"
+#include "Casteljau.h"
 

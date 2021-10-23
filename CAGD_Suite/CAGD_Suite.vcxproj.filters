@@ -95,6 +95,12 @@
     <ClInclude Include="BernsteinPolynom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Casteljau.h">
+      <Filter>GeometryObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Week2.h">
+      <Filter>Excercises</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="RetroMenu.png">

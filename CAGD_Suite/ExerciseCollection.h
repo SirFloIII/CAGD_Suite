@@ -3,6 +3,7 @@
 #include "CAGD_Suite.h"
 
 #include "Week1.h"
+#include "Week2.h"
 
 
 ExerciseProblem* getExerciseByID(int id) {
@@ -23,6 +24,8 @@ ExerciseProblem* getExerciseByID(int id) {
 		return new BSP_1_7();
 	case(108):
 		return new BSP_1_8();
+	case(208):
+		return new BSP_2_17();
 	default:
 		return nullptr;
 	}
@@ -46,16 +49,15 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week  1"]["Exercise 7"].SetID(107);
 	mo["main"]["Week  1"]["Exercise 8"].SetID(108);
 	mo["main"]["Week  1"]["Exercise 9"].SetID(109).Enable(false);
-	mo["main"]["Week  2"].SetTable(1, 9).Enable(false);
-	mo["main"]["Week  2"]["Exercise 1"].SetID(201).Enable(false);
-	mo["main"]["Week  2"]["Exercise 2"].SetID(202).Enable(false);
-	mo["main"]["Week  2"]["Exercise 3"].SetID(203).Enable(false);
-	mo["main"]["Week  2"]["Exercise 4"].SetID(204).Enable(false);
-	mo["main"]["Week  2"]["Exercise 5"].SetID(205).Enable(false);
-	mo["main"]["Week  2"]["Exercise 6"].SetID(206).Enable(false);
-	mo["main"]["Week  2"]["Exercise 7"].SetID(207).Enable(false);
-	mo["main"]["Week  2"]["Exercise 8"].SetID(208).Enable(false);
-	mo["main"]["Week  2"]["Exercise 9"].SetID(209).Enable(false);
+	mo["main"]["Week  2"].SetTable(1, 9);
+	mo["main"]["Week  2"]["Exercise 10"].SetID(201).Enable(false);
+	mo["main"]["Week  2"]["Exercise 11"].SetID(202).Enable(false);
+	mo["main"]["Week  2"]["Exercise 12"].SetID(203).Enable(false);
+	mo["main"]["Week  2"]["Exercise 13"].SetID(204).Enable(false);
+	mo["main"]["Week  2"]["Exercise 14"].SetID(205).Enable(false);
+	mo["main"]["Week  2"]["Exercise 15"].SetID(206).Enable(false);
+	mo["main"]["Week  2"]["Exercise 16"].SetID(207).Enable(false);
+	mo["main"]["Week  2"]["Exercise 17"].SetID(208);
 	mo["main"]["Week  3"].SetTable(1, 9).Enable(false);
 	mo["main"]["Week  3"]["Exercise 1"].SetID(301).Enable(false);
 	mo["main"]["Week  3"]["Exercise 2"].SetID(302).Enable(false);

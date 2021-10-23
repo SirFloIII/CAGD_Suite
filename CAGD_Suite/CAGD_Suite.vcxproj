@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="BernsteinPolynom.h" />
     <ClInclude Include="Bezier.h" />
+    <ClInclude Include="Casteljau.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="GeometryCollection.h" />
     <ClInclude Include="Line.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="RetroMenu.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="Week2.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="RetroMenu.png" />
