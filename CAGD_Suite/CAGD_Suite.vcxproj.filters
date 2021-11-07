@@ -101,6 +101,9 @@
     <ClInclude Include="Week2.h">
       <Filter>Excercises</Filter>
     </ClInclude>
+    <ClInclude Include="Week3.h">
+      <Filter>Excercises</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="RetroMenu.png">

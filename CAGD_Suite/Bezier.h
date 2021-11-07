@@ -10,9 +10,19 @@ private:
 	std::vector<PointPtr> handles;
 
 public:
+	std::vector<PointPtr>
+	getHandles() {
+		return handles;
+	}
+
 	Bezier(std::vector<PointPtr> h) {
 		handles = h;
 		color = olc::RED;
+	}
+
+	Bezier(std::vector<PointPtr> h, olc::Pixel col) {
+		handles = h;
+		color = col;
 	}
 
 	void drawYourself(olc::PixelGameEngine& screen, Transform& transform) override {
@@ -33,6 +43,13 @@ public:
 		return out;
 	}
 
+	std::vector<GeometryObjPtr> getExports() override {
+		std::vector<GeometryObjPtr> out;
+		for (auto p : handles) {
+			out.push_back(p);
+		}
+		return out;
+	}
 };
 
 typedef std::shared_ptr<Bezier> BezierPtr;

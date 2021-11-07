@@ -167,6 +167,7 @@
     <ClInclude Include="RetroMenu.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Week2.h" />
+    <ClInclude Include="Week3.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="RetroMenu.png" />

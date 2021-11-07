@@ -4,6 +4,7 @@
 
 #include "Week1.h"
 #include "Week2.h"
+#include "Week3.h"
 
 
 ExerciseProblem* getExerciseByID(int id) {
@@ -24,10 +25,14 @@ ExerciseProblem* getExerciseByID(int id) {
 		return new BSP_1_7();
 	case(108):
 		return new BSP_1_8();
+	case(206):
+		return new BSP_2_15();
 	case(207):
 		return new BSP_2_16();
 	case(208):
 		return new BSP_2_17();
+	case(303):
+		return new BSP_3_21();
 	default:
 		return nullptr;
 	}
@@ -57,19 +62,16 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week  2"]["Exercise 12"].SetID(203).Enable(false);
 	mo["main"]["Week  2"]["Exercise 13"].SetID(204).Enable(false);
 	mo["main"]["Week  2"]["Exercise 14"].SetID(205).Enable(false);
-	mo["main"]["Week  2"]["Exercise 15"].SetID(206).Enable(false);
+	mo["main"]["Week  2"]["Exercise 15"].SetID(206);
 	mo["main"]["Week  2"]["Exercise 16"].SetID(207);
 	mo["main"]["Week  2"]["Exercise 17"].SetID(208);
-	mo["main"]["Week  3"].SetTable(1, 9).Enable(false);
-	mo["main"]["Week  3"]["Exercise 1"].SetID(301).Enable(false);
-	mo["main"]["Week  3"]["Exercise 2"].SetID(302).Enable(false);
-	mo["main"]["Week  3"]["Exercise 3"].SetID(303).Enable(false);
-	mo["main"]["Week  3"]["Exercise 4"].SetID(304).Enable(false);
-	mo["main"]["Week  3"]["Exercise 5"].SetID(305).Enable(false);
-	mo["main"]["Week  3"]["Exercise 6"].SetID(306).Enable(false);
-	mo["main"]["Week  3"]["Exercise 7"].SetID(307).Enable(false);
-	mo["main"]["Week  3"]["Exercise 8"].SetID(308).Enable(false);
-	mo["main"]["Week  3"]["Exercise 9"].SetID(309).Enable(false);
+	mo["main"]["Week  3"].SetTable(1, 9);
+	mo["main"]["Week  3"]["Exercise 18"].SetID(301).Enable(false);
+	mo["main"]["Week  3"]["Exercise 19"].SetID(302).Enable(false);
+	mo["main"]["Week  3"]["Exercise 20"].SetID(303).Enable(false);
+	mo["main"]["Week  3"]["Exercise 21"].SetID(303);
+	mo["main"]["Week  3"]["Exercise 22"].SetID(304).Enable(false);
+	mo["main"]["Week  3"]["Exercise 23"].SetID(305).Enable(false);
 	mo["main"]["Week  4"].SetTable(1, 9).Enable(false);
 	mo["main"]["Week  4"]["Exercise 1"].SetID(401).Enable(false);
 	mo["main"]["Week  4"]["Exercise 2"].SetID(402).Enable(false);

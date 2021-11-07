@@ -1,5 +1,5 @@
 #include "CAGD_Suite.h"
-
+#include <boost/range/adaptor/reversed.hpp>
 
 bool CAGD_Suite::OnUserCreate()
 {
@@ -23,7 +23,7 @@ bool CAGD_Suite::OnUserUpdate(float dt)
 	}
 
 	if (GetMouse(0).bPressed) {
-		for (auto obj : geoObjs) {
+		for (auto obj : boost::adaptors::reverse(geoObjs)) {
 			if (obj->getsGrabbed(GetMousePos(), transform))
 			{
 				currentlyGrabbedObj = obj;
@@ -139,8 +139,11 @@ void CAGD_Suite::openExercise(ExerciseProblem* ex)
 	if (ex) {
 		exercise = ex;
 		auto objs = exercise->doSetup();
-		for (auto obj : objs)
+		for (auto obj : objs) {
 			geoObjs.push_back(obj);
+			for (auto o : obj->getExports())
+				if (std::count(geoObjs.begin(), geoObjs.end(), o) == 0) geoObjs.push_back(o);
+		}
 	}
 }
 

@@ -13,7 +13,7 @@ public:
 	std::vector<GeometryObjPtr> doSetup() override {
 		description = "\
 def Bernstein(n, i, t):                                                \n\
-    return Binom(n, i) * t**i * (n-t)**(n-i)                           \n\
+    return Binom(n, i) * t**i * (1-t)**(n-i)                           \n\
                                                                        \n\
 def Binom(n, i):                                                       \n\
     return Factorial(n) / (Factorial(i) * Factorial(n-i))              \n\
