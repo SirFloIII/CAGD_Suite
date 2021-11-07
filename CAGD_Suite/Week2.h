@@ -3,7 +3,7 @@
 #include "GeometryCollection.h"
 
 
-
+#define ex_2_15
 class BSP_2_15 : public ExerciseProblem
 {
 private:
@@ -37,7 +37,7 @@ def Factorial(k):                                                      \n\
 };
 
 
-
+#define ex_2_16
 class BSP_2_16 : public ExerciseProblem
 {
 private:
@@ -81,6 +81,7 @@ def Factorial(k):                                                      \n\
 
 };
 
+#define ex_2_17
 class BSP_2_17 : public ExerciseProblem
 {
 private:

@@ -3,7 +3,7 @@
 #include "GeometryCollection.h"
 
 
-
+#define ex_1_1
 class BSP_1_1 : public ExerciseProblem
 {
 public:
@@ -18,6 +18,7 @@ public:
 	}
 };
 
+#define ex_1_2
 class BSP_1_2 : public ExerciseProblem
 {
 private:
@@ -83,6 +84,7 @@ Kreisapproximation:             \n\
 	}
 };
 
+#define ex_1_3
 class BSP_1_3 : public ExerciseProblem
 {
 private:
@@ -118,6 +120,7 @@ Symmetrie der Bernstein-Polynome:        \n\
 	}
 };
 
+#define ex_1_4
 class BSP_1_4 : public ExerciseProblem
 {
 private:
@@ -166,6 +169,7 @@ Maxima der Bernstein-Polynome:        \n\
 };
 
 
+#define ex_1_5
 class BSP_1_5 : public ExerciseProblem
 {
 public:
@@ -203,6 +207,7 @@ Bezierkurve mit singulaerem Punkt: \n\n\
 };
 
 
+#define ex_1_6
 class BSP_1_6 : public ExerciseProblem
 {
 private:
@@ -251,6 +256,7 @@ def fitBezier(P0, Pt, P1, t):			\n\n\
 };
 
 
+#define ex_1_7
 class BSP_1_7 : public ExerciseProblem
 {
 private:
@@ -297,6 +303,7 @@ Kreis als Bezierkurve:        \n\
 };
 
 
+#define ex_1_8
 class BSP_1_8 : public ExerciseProblem
 {
 private:

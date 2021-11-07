@@ -3,7 +3,7 @@
 #include "GeometryCollection.h"
 
 
-
+#define ex_3_21
 class BSP_3_21 : public ExerciseProblem
 {
 private:
