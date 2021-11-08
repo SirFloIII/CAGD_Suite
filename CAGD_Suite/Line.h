@@ -17,6 +17,9 @@ public:
 		screen.DrawLine(a, b, color);
 	}
 
+	std::vector<GeometryObjPtr> getExports() override {
+		return {A, B};
+	}
 
 };
 
