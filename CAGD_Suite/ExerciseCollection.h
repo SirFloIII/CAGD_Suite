@@ -5,6 +5,7 @@
 #include "Week1.h"
 #include "Week2.h"
 #include "Week3.h"
+#include "Week4.h"
 
 
 ExerciseProblem* getExerciseByID(int id) {
@@ -35,6 +36,8 @@ ExerciseProblem* getExerciseByID(int id) {
 		return new BSP_3_18();
 	case(303):
 		return new BSP_3_21();
+	case(403):
+		return new BSP_4_26();
 	default:
 		return nullptr;
 	}
@@ -74,16 +77,17 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week  3"]["Exercise 21"].SetID(303);
 	mo["main"]["Week  3"]["Exercise 22"].SetID(304).Enable(false);
 	mo["main"]["Week  3"]["Exercise 23"].SetID(305).Enable(false);
-	mo["main"]["Week  4"].SetTable(1, 9).Enable(false);
-	mo["main"]["Week  4"]["Exercise 1"].SetID(401).Enable(false);
-	mo["main"]["Week  4"]["Exercise 2"].SetID(402).Enable(false);
-	mo["main"]["Week  4"]["Exercise 3"].SetID(403).Enable(false);
-	mo["main"]["Week  4"]["Exercise 4"].SetID(404).Enable(false);
-	mo["main"]["Week  4"]["Exercise 5"].SetID(405).Enable(false);
-	mo["main"]["Week  4"]["Exercise 6"].SetID(406).Enable(false);
-	mo["main"]["Week  4"]["Exercise 7"].SetID(407).Enable(false);
-	mo["main"]["Week  4"]["Exercise 8"].SetID(408).Enable(false);
-	mo["main"]["Week  4"]["Exercise 9"].SetID(409).Enable(false);
+	mo["main"]["Week  4"].SetTable(1, 9);
+	mo["main"]["Week  4"]["Exercise 24"].SetID(401).Enable(false);
+	mo["main"]["Week  4"]["Exercise 25"].SetID(402).Enable(false);
+	mo["main"]["Week  4"]["Exercise 26"].SetID(403);
+	mo["main"]["Week  4"]["Exercise 27"].SetID(404).Enable(false);
+	mo["main"]["Week  4"]["Exercise 28"].SetID(405).Enable(false);
+	mo["main"]["Week  4"]["Exercise 29"].SetID(406).Enable(false);
+	mo["main"]["Week  4"]["Exercise 30"].SetID(407).Enable(false);
+	mo["main"]["Week  4"]["Exercise 31"].SetID(408).Enable(false);
+	mo["main"]["Week  4"]["Exercise 32"].SetID(409).Enable(false);
+	mo["main"]["Week  4"]["Exercise 33"].SetID(410).Enable(false);
 	mo["main"]["Week  5"].SetTable(1, 9).Enable(false);
 	mo["main"]["Week  5"]["Exercise 1"].SetID(501).Enable(false);
 	mo["main"]["Week  5"]["Exercise 2"].SetID(502).Enable(false);
