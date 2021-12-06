@@ -47,6 +47,28 @@ public:
 
 };
 
+#define ex_4_30
+class BSP_4_30 : public ExerciseProblem
+{
+private:
+	NURBSPtr b;
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "";
+
+		return {
+			b = std::make_shared<NURBS>(std::vector<PointPtr>({std::make_shared<Point>(0,  -1, "A"),
+															 std::make_shared<Point>(3,   0, "B"),
+															 std::make_shared<Point>(4, 2, "C"),
+															 std::make_shared<Point>(4, 3, "D"),
+															 std::make_shared<Point>(6, 2, "E")}),
+										 std::vector<float>({ 0,0,0,0,2,6,6,6,6 }),
+										 3)
+		};
+	}
+
+};
+
 
 class Circle_from_NURBS : public ExerciseProblem
 {

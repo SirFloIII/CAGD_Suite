@@ -40,6 +40,8 @@ ExerciseProblem* getExerciseByID(int id) {
 		return new BSP_4_26();
 	case(406):
 		return new BSP_4_29();
+	case(407):
+		return new BSP_4_30();
 	case(1101):
 		return new Circle_from_NURBS();
 	default:
@@ -88,7 +90,7 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week  4"]["Exercise 27"].SetID(404).Enable(false);
 	mo["main"]["Week  4"]["Exercise 28"].SetID(405).Enable(false);
 	mo["main"]["Week  4"]["Exercise 29"].SetID(406);
-	mo["main"]["Week  4"]["Exercise 30"].SetID(407).Enable(false);
+	mo["main"]["Week  4"]["Exercise 30"].SetID(407);
 	mo["main"]["Week  4"]["Exercise 31"].SetID(408).Enable(false);
 	mo["main"]["Week  4"]["Exercise 32"].SetID(409).Enable(false);
 	mo["main"]["Week  4"]["Exercise 33"].SetID(410).Enable(false);
