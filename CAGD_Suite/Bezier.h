@@ -36,9 +36,9 @@ public:
 	}
 
 	olc::vf2d evaluate(float t) {
-		int n = handles.size() - 1;
+		size_t n = handles.size() - 1;
 		olc::vf2d out = { 0, 0 };
-		for (int i = 0; i <= n; i++)
+		for (size_t i = 0; i <= n; i++)
 			out += Bernstein(n, i, t) * handles[i]->pos;
 		return out;
 	}

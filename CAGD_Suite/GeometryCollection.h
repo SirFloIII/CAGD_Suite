@@ -7,4 +7,5 @@
 #include "Circle.h"
 #include "BernsteinPolynom.h"
 #include "Casteljau.h"
+#include "NURBS.h"
 

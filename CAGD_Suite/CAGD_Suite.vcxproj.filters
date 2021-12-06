@@ -107,6 +107,9 @@
     <ClInclude Include="Week4.h">
       <Filter>Excercises</Filter>
     </ClInclude>
+    <ClInclude Include="NURBS.h">
+      <Filter>GeometryObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="RetroMenu.png">
