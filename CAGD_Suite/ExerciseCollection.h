@@ -6,6 +6,7 @@
 #include "Week2.h"
 #include "Week3.h"
 #include "Week4.h"
+#include "Week5.h"
 
 
 ExerciseProblem* getExerciseByID(int id) {
@@ -42,8 +43,10 @@ ExerciseProblem* getExerciseByID(int id) {
 		return new BSP_4_29();
 	case(407):
 		return new BSP_4_30();
-	case(1101):
-		return new Circle_from_NURBS();
+	case(501):
+		return new BSP_5_34();
+	case(502):
+		return new BSP_5_35();
 	default:
 		return nullptr;
 	}
@@ -94,16 +97,13 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week  4"]["Exercise 31"].SetID(408).Enable(false);
 	mo["main"]["Week  4"]["Exercise 32"].SetID(409).Enable(false);
 	mo["main"]["Week  4"]["Exercise 33"].SetID(410).Enable(false);
-	mo["main"]["Week  5"].SetTable(1, 9).Enable(false);
-	mo["main"]["Week  5"]["Exercise 1"].SetID(501).Enable(false);
-	mo["main"]["Week  5"]["Exercise 2"].SetID(502).Enable(false);
-	mo["main"]["Week  5"]["Exercise 3"].SetID(503).Enable(false);
-	mo["main"]["Week  5"]["Exercise 4"].SetID(504).Enable(false);
-	mo["main"]["Week  5"]["Exercise 5"].SetID(505).Enable(false);
-	mo["main"]["Week  5"]["Exercise 6"].SetID(506).Enable(false);
-	mo["main"]["Week  5"]["Exercise 7"].SetID(507).Enable(false);
-	mo["main"]["Week  5"]["Exercise 8"].SetID(508).Enable(false);
-	mo["main"]["Week  5"]["Exercise 9"].SetID(509).Enable(false);
+	mo["main"]["Week  5"].SetTable(1, 9);
+	mo["main"]["Week  5"]["Exercise 34"].SetID(501);
+	mo["main"]["Week  5"]["Exercise 35"].SetID(502);
+	mo["main"]["Week  5"]["Exercise 36"].SetID(503).Enable(false);
+	mo["main"]["Week  5"]["Exercise 37"].SetID(504).Enable(false);
+	mo["main"]["Week  5"]["Exercise 38"].SetID(505).Enable(false);
+	mo["main"]["Week  5"]["Exercise 39"].SetID(506).Enable(false);
 	mo["main"]["Week  6"].SetTable(1, 9).Enable(false);
 	mo["main"]["Week  6"]["Exercise 1"].SetID(601).Enable(false);
 	mo["main"]["Week  6"]["Exercise 2"].SetID(602).Enable(false);
@@ -154,8 +154,6 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week 10"]["Exercise 7"].SetID(1007).Enable(false);
 	mo["main"]["Week 10"]["Exercise 8"].SetID(1008).Enable(false);
 	mo["main"]["Week 10"]["Exercise 9"].SetID(1009).Enable(false);
-	mo["main"]["Bonus"].SetTable(1, 9);
-	mo["main"]["Bonus"]["Circle from NURBS"].SetID(1101);
 	
 	mo.Build();
 

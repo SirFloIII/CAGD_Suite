@@ -170,6 +170,7 @@
     <ClInclude Include="Week2.h" />
     <ClInclude Include="Week3.h" />
     <ClInclude Include="Week4.h" />
+    <ClInclude Include="Week5.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="RetroMenu.png" />
