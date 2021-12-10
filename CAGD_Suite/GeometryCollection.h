@@ -8,4 +8,5 @@
 #include "BernsteinPolynom.h"
 #include "Casteljau.h"
 #include "NURBS.h"
+#include "BezierSurface.h"
 

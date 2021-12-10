@@ -3,9 +3,11 @@
 
 #include "Transform.h"
 
+using namespace std;
+
 class GeometryObject;
 
-typedef std::shared_ptr<GeometryObject> GeometryObjPtr;
+typedef shared_ptr<GeometryObject> GeometryObjPtr;
 
 class GeometryObject
 {
@@ -17,6 +19,6 @@ public:
 	}
 	virtual void updatePosition(olc::vi2d mousePos, Transform& transform) {}
 	olc::Pixel color;
-	virtual std::vector<GeometryObjPtr> getExports() { return {}; }
+	virtual vector<GeometryObjPtr> getExports() { return {}; }
 };
 

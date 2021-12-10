@@ -113,6 +113,9 @@
     <ClInclude Include="Week5.h">
       <Filter>Excercises</Filter>
     </ClInclude>
+    <ClInclude Include="BezierSurface.h">
+      <Filter>GeometryObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="RetroMenu.png">

@@ -60,3 +60,45 @@ public:
 	}
 
 };
+
+class BSP_5_36 : public ExerciseProblem
+{
+private:
+	BezierSurfacePtr b;
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "";
+
+		return {
+			b = make_shared<BezierSurface>(vector<PointPtr>({make_shared<Point>(2, 0, 4),
+															 make_shared<Point>(3, 1, 2),
+															 make_shared<Point>(0, 2, 0),
+															 make_shared<Point>(-2, 1, 3)}),
+															 2)
+		};
+	}
+
+};
+
+class BSP_5_37 : public ExerciseProblem
+{
+private:
+	BezierSurfacePtr b;
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "";
+
+		return {
+			b = make_shared<BezierSurface>(vector<PointPtr>({make_shared<Point>(2, 0, 0),
+															 make_shared<Point>(2, -1, 0, olc::GREEN),
+															 make_shared<Point>(4, -2, 1),
+															 make_shared<Point>(1, 0, 0, olc::RED),
+															 make_shared<Point>(2, -2, 2, olc::YELLOW),
+															 make_shared<Point>(4, -2, 3, olc::RED),
+															 make_shared<Point>(3, -1, 4),
+															 make_shared<Point>(4, -2, 4, olc::GREEN),
+															 make_shared<Point>(4, -2, 5)}),
+															 3)
+		};
+	}
+};

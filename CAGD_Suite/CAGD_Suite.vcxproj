@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="BernsteinPolynom.h" />
     <ClInclude Include="Bezier.h" />
+    <ClInclude Include="BezierSurface.h" />
     <ClInclude Include="Casteljau.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="GeometryCollection.h" />

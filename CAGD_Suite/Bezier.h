@@ -10,8 +10,7 @@ private:
 	std::vector<PointPtr> handles;
 
 public:
-	std::vector<PointPtr>
-	getHandles() {
+	std::vector<PointPtr> getHandles() {
 		return handles;
 	}
 
