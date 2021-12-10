@@ -13,13 +13,14 @@ public:
 	std::string name = "";
 
 	Point(float x, float y);
-	//Point(olc::vf2d x);
 	Point(float x, float y, olc::Pixel color);
-	//Point(olc::vf2d x, olc::Pixel color);
 	Point(float x, float y, std::string name);
-	//Point(olc::vf2d x, std::string name);
 	Point(float x, float y, olc::Pixel color, std::string name);
-	//Point(olc::vf2d x, olc::Pixel color, std::string name);
+
+	Point(float x, float y, float z);
+	Point(float x, float y, float z, olc::Pixel color);
+	Point(float x, float y, float z, std::string name);
+	Point(float x, float y, float z, olc::Pixel color, std::string name);
 
 	void drawYourself(olc::PixelGameEngine& screen, Transform& transform) override {
 		auto scPos = transform.WorldToScreen(pos);
@@ -30,8 +31,9 @@ public:
 		auto a = transform.WorldToScreen(pos) - mousePos;
 		return (a.mag() <= 2);
 	}
-	void updatePosition(olc::vi2d mousePos, Transform& transform) override {
-		pos = transform.ScreenToWorld(mousePos);
+	void updatePosition(olc::vi2d mousePos, Transform& transform) override {		
+		float z = transform.WorldToScreenDistance(pos);
+		pos = transform.ScreenToWorld(mousePos, z);
 	}
 
 

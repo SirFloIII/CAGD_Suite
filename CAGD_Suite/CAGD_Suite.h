@@ -22,6 +22,7 @@ public:
 private:
 	Transform transform;
 	olc::vf2d vStartPan = { 0.0f, 0.0f };
+	olc::vf2d vStartTurn = { 0.0f, 0.0f };
 
 
 

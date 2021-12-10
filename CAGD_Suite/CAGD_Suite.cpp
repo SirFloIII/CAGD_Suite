@@ -79,6 +79,20 @@ void CAGD_Suite::UpdateCamera()
 
 	olc::vf2d vMouseBeforeZoom;
 	transform.ScreenToWorld((int)mouseOnScreen.x, (int)mouseOnScreen.y, vMouseBeforeZoom);
+	
+	// Handle Pan & Zoom
+	if (GetMouse(2).bPressed)
+	{
+		vStartTurn = mouseOnScreen;
+	}
+
+	if (GetMouse(2).bHeld)
+	{
+		transform.phi += (mouseOnScreen.x - vStartTurn.x)/100;
+		transform.theta += (mouseOnScreen.y - vStartTurn.y)/100;
+		vStartTurn = mouseOnScreen;
+	}
+
 
 	if (GetMouseWheel() > 0)
 	{
@@ -95,6 +109,16 @@ void CAGD_Suite::UpdateCamera()
 	transform.vOffset += (vMouseBeforeZoom - vMouseAfterZoom);
 }
 
+float max(float x, float y)
+{
+	return x > y ? x : y;
+}
+
+float min(float x, float y)
+{
+	return x < y ? x : y;
+}
+
 void CAGD_Suite::RenderBackground()
 {
 	// Clear Screen
@@ -107,6 +131,11 @@ void CAGD_Suite::RenderBackground()
 	olc::vf2d vWorldTopLeft, vWorldBottomRight;
 	transform.ScreenToWorld(0, ScreenHeight(), vWorldTopLeft);
 	transform.ScreenToWorld(ScreenWidth(), 0, vWorldBottomRight);
+	vWorldTopLeft.x = min(vWorldTopLeft.x, vWorldTopLeft.y);
+	vWorldTopLeft.y = min(vWorldTopLeft.x, vWorldTopLeft.y);
+
+	vWorldBottomRight.x = max(vWorldBottomRight.x, vWorldBottomRight.y);
+	vWorldBottomRight.y = max(vWorldBottomRight.x, vWorldBottomRight.y);
 
 	// Get values just beyond screen boundaries
 	vWorldTopLeft.x = floor(vWorldTopLeft.x);
