@@ -53,9 +53,9 @@ public:
 		}
 	}
 
-	olc::vf2d evaluate(float t) {
+	olc::vf3d evaluate(float t) {
 		size_t n = handles.size();
-		olc::vf2d sum = {0, 0};
+		olc::vf3d sum = {0, 0};
 		for (size_t i = 0; i < n; i++) {
 			sum += handles[i]->pos * R(i, order, t);
 		}

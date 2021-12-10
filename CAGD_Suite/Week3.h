@@ -74,7 +74,7 @@ public:
 	void onK1(float dt) override {
 		float alpha = t->value;
 
-		std::array<std::array<olc::vf2d, 4>, 4> beta;
+		std::array<std::array<olc::vf3d, 4>, 4> beta;
 
 		for (size_t j = 0; j < 4; j++)
 			beta[0][j] = b->getHandles()[j]->pos;

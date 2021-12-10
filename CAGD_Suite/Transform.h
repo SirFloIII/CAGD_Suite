@@ -13,11 +13,11 @@ public:
 	float fGrid = 1.0f;
 
 	// Convert coordinates from World Space --> Screen Space
-	void WorldToScreen(const olc::vf2d& v, int& nScreenX, int& nScreenY);
-	olc::vi2d WorldToScreen(const olc::vf2d& v);
+	void WorldToScreen(const olc::vf3d& v, int& nScreenX, int& nScreenY);
+	olc::vi2d WorldToScreen(const olc::vf3d& v);
 
 	// Convert coordinates from Screen Space --> World Space
 	void ScreenToWorld(int nScreenX, int nScreenY, olc::vf2d& v);
-	olc::vf2d ScreenToWorld(const olc::vi2d& v);
+	olc::vf3d ScreenToWorld(const olc::vi2d& v);
 };
 

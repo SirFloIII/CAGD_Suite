@@ -27,7 +27,7 @@ public:
 	}
 
 	void drawYourself(olc::PixelGameEngine& screen, Transform& transform) override {
-		std::vector<olc::vf2d> points;
+		std::vector<olc::vf3d> points;
 		for (auto point : handles) points.push_back(point->pos);
 
 		for (size_t i = 0; i <= handles.size(); i++) {
@@ -38,9 +38,6 @@ public:
 			}
 		}
 		
-		
-		
-		
 		auto A = evaluate(0);
 		auto B = A;
 		for (float t = 0; t <= 1; t += 0.01) {
@@ -50,8 +47,8 @@ public:
 		}
 	}
 
-	olc::vf2d evaluate(float t) {
-		std::vector<olc::vf2d> pos;
+	olc::vf3d evaluate(float t) {
+		std::vector<olc::vf3d> pos;
 		for (auto point : handles) pos.push_back(point->pos);
 		return deCasteljau(t, pos);
 	}

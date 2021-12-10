@@ -2,13 +2,13 @@
 
 
 
-void Transform::WorldToScreen(const olc::vf2d& v, int& nScreenX, int& nScreenY)
+void Transform::WorldToScreen(const olc::vf3d& v, int& nScreenX, int& nScreenY)
 {
 	nScreenX = (int)((v.x - vOffset.x) * fScale);
 	nScreenY = (int)(SCREENHEIGHT - ((v.y - vOffset.y) * fScale));
 }
 
-olc::vi2d Transform::WorldToScreen(const olc::vf2d& v)
+olc::vi2d Transform::WorldToScreen(const olc::vf3d& v)
 {
 	return { (int)((v.x - vOffset.x) * fScale) ,
 			 (int)(SCREENHEIGHT - ((v.y - vOffset.y) * fScale)) };
@@ -23,8 +23,9 @@ void Transform::ScreenToWorld(int nScreenX, int nScreenY, olc::vf2d& v)
 }
 
 
-olc::vf2d Transform::ScreenToWorld(const olc::vi2d& v) {
+olc::vf3d Transform::ScreenToWorld(const olc::vi2d& v) {
 
 	return { (float)v.x / fScale + vOffset.x,
-			 (float)(SCREENHEIGHT - v.y) / fScale + vOffset.y };
+			 (float)(SCREENHEIGHT - v.y) / fScale + vOffset.y,
+				0 };
 }

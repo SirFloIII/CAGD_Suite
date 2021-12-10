@@ -9,17 +9,17 @@ class Point : public GeometryObject
 private:
 
 public:
-	olc::vf2d pos;
+	olc::vf3d pos;
 	std::string name = "";
 
 	Point(float x, float y);
-	Point(olc::vf2d x);
+	//Point(olc::vf2d x);
 	Point(float x, float y, olc::Pixel color);
-	Point(olc::vf2d x, olc::Pixel color);
+	//Point(olc::vf2d x, olc::Pixel color);
 	Point(float x, float y, std::string name);
-	Point(olc::vf2d x, std::string name);
+	//Point(olc::vf2d x, std::string name);
 	Point(float x, float y, olc::Pixel color, std::string name);
-	Point(olc::vf2d x, olc::Pixel color, std::string name);
+	//Point(olc::vf2d x, olc::Pixel color, std::string name);
 
 	void drawYourself(olc::PixelGameEngine& screen, Transform& transform) override {
 		auto scPos = transform.WorldToScreen(pos);
@@ -34,7 +34,6 @@ public:
 		pos = transform.ScreenToWorld(mousePos);
 	}
 
-	operator olc::vf2d() const { return pos; }
 
 };
 
