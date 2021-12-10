@@ -43,6 +43,10 @@ ExerciseProblem* getExerciseByID(int id) {
 		return new BSP_4_29();
 	case(407):
 		return new BSP_4_30();
+	case(408):
+		return new BSP_4_31();
+	case(409):
+		return new BSP_4_32();
 	case(501):
 		return new BSP_5_34();
 	case(502):
@@ -94,8 +98,8 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week  4"]["Exercise 28"].SetID(405).Enable(false);
 	mo["main"]["Week  4"]["Exercise 29"].SetID(406);
 	mo["main"]["Week  4"]["Exercise 30"].SetID(407);
-	mo["main"]["Week  4"]["Exercise 31"].SetID(408).Enable(false);
-	mo["main"]["Week  4"]["Exercise 32"].SetID(409).Enable(false);
+	mo["main"]["Week  4"]["Exercise 31"].SetID(408);
+	mo["main"]["Week  4"]["Exercise 32"].SetID(409);
 	mo["main"]["Week  4"]["Exercise 33"].SetID(410).Enable(false);
 	mo["main"]["Week  5"].SetTable(1, 9);
 	mo["main"]["Week  5"]["Exercise 34"].SetID(501);

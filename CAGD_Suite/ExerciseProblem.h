@@ -10,6 +10,8 @@ on(K3) \
 on(K4) \
 on(K5)
 
+using namespace std;
+
 class ExerciseProblem
 {
 public:
