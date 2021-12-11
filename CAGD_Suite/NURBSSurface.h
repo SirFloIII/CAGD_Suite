@@ -57,7 +57,7 @@ public:
 	}
 
 	void drawYourself(olc::PixelGameEngine& screen, Transform& transform) override {
-		for (float u = knotsU.front(); u <= knotsU.back(); u += 1 / 16.0) {
+		for (float u = knotsU.front(); u <= knotsU.back(); u += 1 / 8.0) {
 			auto A = evaluate(u, 0);
 			auto B = A;
 			for (float t = knotsV.front(); t <= knotsV.back(); t += 0.01) {
@@ -67,7 +67,7 @@ public:
 			}
 
 		}
-		for (float v = knotsV.front(); v <= knotsV.back(); v += 1 / 16.0) {
+		for (float v = knotsV.front(); v <= knotsV.back(); v += 1 / 8.0) {
 			auto A = evaluate(0, v);
 			auto B = A;
 			for (float t = knotsU.front(); t <= knotsU.back(); t += 0.01) {
