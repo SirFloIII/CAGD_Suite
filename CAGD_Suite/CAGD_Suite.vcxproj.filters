@@ -116,6 +116,9 @@
     <ClInclude Include="BezierSurface.h">
       <Filter>GeometryObjects</Filter>
     </ClInclude>
+    <ClInclude Include="NURBSSurface.h">
+      <Filter>GeometryObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="RetroMenu.png">

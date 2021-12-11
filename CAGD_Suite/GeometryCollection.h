@@ -9,4 +9,4 @@
 #include "Casteljau.h"
 #include "NURBS.h"
 #include "BezierSurface.h"
-
+#include "NURBSSurface.h"

@@ -159,6 +159,7 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="NURBS.h" />
+    <ClInclude Include="NURBSSurface.h" />
     <ClInclude Include="Slider.h" />
     <ClInclude Include="Week1.h" />
     <ClInclude Include="CAGD_Suite.h" />

@@ -102,3 +102,61 @@ public:
 		};
 	}
 };
+
+
+class BSP_5_38 : public ExerciseProblem
+{
+private:
+	NURBSSurfacePtr b;
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "";
+
+		float s = sqrt(2) / 2;
+
+		return {
+			b = make_shared<NURBSSurface>(vector<PointPtr>({make_shared<Point>(3, 0, 0),
+															 make_shared<Point>(3, 3, 0),
+															 make_shared<Point>(0, 3, 0),
+															 make_shared<Point>(1, 0, 5),
+															 make_shared<Point>(1, 1, 5),
+															 make_shared<Point>(0, 1, 5)}),
+										3,
+										vector<float>({0,0,0,1,1,2,2,2}),
+										vector<float>({0,1,2}),
+										vector<float>({1, s, 1, 1, s, 1}),
+										2,
+										1)
+		};
+	}
+};
+
+class BSP_5_39 : public ExerciseProblem
+{
+private:
+	NURBSSurfacePtr b;
+public:
+	std::vector<GeometryObjPtr> doSetup() override {
+		description = "";
+
+		float s = sqrt(2) / 2;
+
+		return {
+			b = make_shared<NURBSSurface>(vector<PointPtr>({make_shared<Point>(3, 0, 0),
+															make_shared<Point>(3, 3, 0),
+															make_shared<Point>(0, 3, 0),
+															make_shared<Point>(3, 0, 3),
+															make_shared<Point>(3, 3, 3),
+															make_shared<Point>(0, 3, 3),
+															make_shared<Point>(0, 0, 3),
+															make_shared<Point>(0, 0, 3),
+															make_shared<Point>(0, 0, 3)}),
+										3,
+										vector<float>({0,0,0,1,1,2,2,2}),
+										vector<float>({0,0,0,1,1,2,2,2}),
+										vector<float>({1, s, 1, 1, s, 1, 1, s, 1}),
+										2,
+										2)
+		};
+	}
+};
