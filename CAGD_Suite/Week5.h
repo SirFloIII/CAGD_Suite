@@ -2,30 +2,44 @@
 #include "ExerciseProblem.h"
 #include "GeometryCollection.h"
 
+const float s = sqrt(2) / 2.0;
+const float d = 1 / 3.0;
+const float h = 1 / 2.0;
+
 class BSP_5_34 : public ExerciseProblem
 {
 private:
-	NURBSPtr b;
 public:
 	std::vector<GeometryObjPtr> doSetup() override {
 		description = "";
 
-		float s = sqrt(2) / 2;
-
+		
 		return {
-			b = std::make_shared<NURBS>(std::vector<PointPtr>({std::make_shared<Point>(1, 0),
-															 std::make_shared<Point>(1, 1),
-															 std::make_shared<Point>(0, 1),
-															 std::make_shared<Point>(-1, 1),
-															 std::make_shared<Point>(-1, 0),
-															 std::make_shared<Point>(-1, -1),
-															 std::make_shared<Point>(0, -1),
-															 std::make_shared<Point>(1, -1),
-															 std::make_shared<Point>(1, 0),
-										}),
+			std::make_shared<NURBS>(std::vector<PointPtr>({std::make_shared<Point>(1, 0),
+														   std::make_shared<Point>(1, 1),
+														   std::make_shared<Point>(0, 1),
+														   std::make_shared<Point>(-1, 1),
+														   std::make_shared<Point>(-1, 0),
+														   std::make_shared<Point>(-1, -1),
+														   std::make_shared<Point>(0, -1),
+														   std::make_shared<Point>(1, -1),
+														   std::make_shared<Point>(1, 0),
+									}),
 										 std::vector<float>({0,0,0,1,1,2,2,3,3,4,4,4}),
 										 std::vector<float>({1,s,1,s,1,s,1,s,1}),
-										 2)
+										 2),
+			std::make_shared<NURBS>(std::vector<PointPtr>({std::make_shared<Point>(3 + 1, 0),
+														   std::make_shared<Point>(3 + 1, 2),
+														   std::make_shared<Point>(3 - 1, 2),
+														   std::make_shared<Point>(3 - 1, 0),
+														   std::make_shared<Point>(3 - 1, -2),
+														   std::make_shared<Point>(3 + 1, -2),
+														   std::make_shared<Point>(3 + 1, 0),
+									}),
+										 std::vector<float>({0,0,0,0,1,1,1,2,2,2,2}),
+										 std::vector<float>({1,d,d,1,d,d,1}),
+										 3)
+
 		};
 	}
 
@@ -40,8 +54,7 @@ public:
 	std::vector<GeometryObjPtr> doSetup() override {
 		description = "";
 
-		float s = sqrt(2) / 2;
-
+		
 		return {
 			b = make_shared<NURBS>(vector<PointPtr>({make_shared<Point>(2, 0),
 										             make_shared<Point>(2, 1),
@@ -123,7 +136,7 @@ public:
 															make_shared<Point>(0, 1, 5)}),
 										3,
 										vector<float>({0,0,0,1,1,2,2,2}),
-										vector<float>({0,1,2}),
+										vector<float>({0,1,2,3}),
 										vector<float>({1, s, 1, 1, s, 1}),
 										2,
 										1)
@@ -138,8 +151,6 @@ private:
 public:
 	std::vector<GeometryObjPtr> doSetup() override {
 		description = "";
-
-		float s = sqrt(2) / 2;
 
 		return {
 			b = make_shared<NURBSSurface>(vector<PointPtr>({make_shared<Point>( 0,  0, -1),
@@ -190,11 +201,11 @@ public:
 										}),
 										9,
 										vector<float>({0,0,0,1,1,2,2,3,3,4,4,4}),
-										vector<float>({0,0,0,1,1,2,2,3,3,4,4,4}),
+										vector<float>({0,0,0,1,1,2,2,2}),
 										vector<float>({1,s,1,s,1,s,1,s,1,
+													   s,h,s,h,s,h,s,h,s,
 													   1,s,1,s,1,s,1,s,1,
-													   1,s,1,s,1,s,1,s,1,
-													   1,s,1,s,1,s,1,s,1,
+													   s,h,s,h,s,h,s,h,s,
 													   1,s,1,s,1,s,1,s,1}),
 										2,
 										2)

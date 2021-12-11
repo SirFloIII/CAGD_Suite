@@ -57,41 +57,48 @@ public:
 	}
 
 	void drawYourself(olc::PixelGameEngine& screen, Transform& transform) override {
+		cout << "here\n";
 		for (float u = knotsU.front(); u <= knotsU.back(); u += 1 / 8.0) {
 			auto A = evaluate(u, 0);
 			auto B = A;
-			for (float t = knotsV.front(); t <= knotsV.back(); t += 0.01) {
+			for (float t = knotsV.front(); t <= knotsV.back(); t += 0.04) {
 				B = A;
 				A = evaluate(u, t);
 				screen.DrawLine(transform.WorldToScreen(A), transform.WorldToScreen(B), color);
 			}
 
 		}
+		cout << "there\n";
 		for (float v = knotsV.front(); v <= knotsV.back(); v += 1 / 8.0) {
 			auto A = evaluate(0, v);
 			auto B = A;
-			for (float t = knotsU.front(); t <= knotsU.back(); t += 0.01) {
+			for (float t = knotsU.front(); t <= knotsU.back(); t += 0.04) {
 				B = A;
 				A = evaluate(t, v);
 				screen.DrawLine(transform.WorldToScreen(A), transform.WorldToScreen(B), color2);
 			}
 
 		}
+		cout << "where\n";
 	}
 
 	olc::vf3d evaluate(float u, float v) {
 		olc::vf3d sum = { 0, 0 };
+		float rsum = Rsum(orderU, orderV, u, v);
 		for (size_t i = 0; i < n*m; i++) {
-			sum += handles[i]->pos * R(i, orderU, orderV, u, v);
+			sum += handles[i]->pos * R(i, orderU, orderV, u, v, rsum);
 		}
 		return sum;
 	}
 
-	float R(size_t i, size_t p, size_t q, float u, float v) {
+	float Rsum(size_t p, size_t q, float u, float v) {
 		float sum = 0;
-		for (size_t k = 0; k < n; k++)
-			for (size_t l = 0; l < m; l++)
-				sum += N(k, p, u, knotsU) * N(l, q, v, knotsV) * weights[i];
+		for (size_t i = 0; i < n*m; i++)
+			sum += N(i%n, p, u, knotsU) * N(i/n, q, v, knotsV) * weights[i];
+		return sum;
+	}
+
+	float R(size_t i, size_t p, size_t q, float u, float v, float sum) {
 		return N(i%n, p, u, knotsU) * N(i/n, q, v, knotsV) * weights[i] / sum;
 	}
 
