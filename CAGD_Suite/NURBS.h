@@ -56,16 +56,21 @@ public:
 	olc::vf3d evaluate(float t) {
 		size_t n = handles.size();
 		olc::vf3d sum = {0, 0};
+		float rsum = Rsum(order, t);
 		for (size_t i = 0; i < n; i++) {
-			sum += handles[i]->pos * R(i, order, t);
+			sum += handles[i]->pos * R(i, order, t, rsum);
 		}
 		return sum;
 	}
 
-	float R(size_t i, size_t j, float u) {
+	float Rsum(size_t j, float u) {
 		float sum = 0;
 		for (size_t k = 0; k < handles.size(); k++)
 			sum += N(k, j, u) * weights[k];
+		return sum;
+	}
+
+	float R(size_t i, size_t j, float u, float sum) {
 		return N(i, j, u) * weights[i] / sum;
 	}
 

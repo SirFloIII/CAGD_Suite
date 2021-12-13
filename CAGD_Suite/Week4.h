@@ -77,7 +77,16 @@ private:
 	vector<NURBSPtr> b;
 public:
 	vector<GeometryObjPtr> doSetup() override {
-		description = "";
+		description = "\
+                                                                               \n\n\
+def Chaikin(polygon: list[Point], ratio: float = 0.25) -> list[Point]:         \n\n\
+    out = []                                                                   \n\n\
+    for A, B in zip(polygon, polygon[1:] + polygon[:1]):                       \n\n\
+        out.append((1-ratio) * A + ratio * B)                                  \n\n\
+        out.append(ratio * A + (1-ratio) * B)                                  \n\n\
+    return out                                                                 \n\n\
+                                                                               \n\n\
+";
 		
 		vector<olc::Pixel> colors = { olc::WHITE,
 		olc::GREEN,
@@ -101,7 +110,7 @@ public:
 			if (j != 0) b[j]->color = colors[j];
 		}
 
-		return { b[0], b[1], b[2], b[3], t_slider = make_shared<Slider<float>>(0.25, 0, 1, 10, "t") };
+		return { b[0], b[1], b[2], b[3], t_slider = make_shared<Slider<float>>(0.25, 0, 1, 20, "t") };
 	}
 
 	void eachFrame(float dt) override {
@@ -128,7 +137,16 @@ private:
 	vector<NURBSPtr> b;
 public:
 	vector<GeometryObjPtr> doSetup() override {
-		description = "";
+		description = "\
+                                                                               \n\n\
+def LaneRiesenfeld(polygon: list[Point], ratio: float = 0.5) -> list[Point]:   \n\n\
+    out = []                                                                   \n\n\
+    for A, B in zip(polygon, polygon[1:] + polygon[:1]):                       \n\n\
+        out.append(A)                                                          \n\n\
+        out.append((1-ratio) * A + ratio * B)                                  \n\n\
+    return [(1-ratio) * A + ratio * B for A, B in zip(out, out[1:]+out[:1])]   \n\n\
+                                                                               \n\n\
+";
 
 		vector<olc::Pixel> colors = { olc::WHITE,
 		olc::GREEN,
@@ -152,7 +170,7 @@ public:
 			if (j != 0) b[j]->color = colors[j];
 		}
 
-		return { b[0], b[1], b[2], b[3], t_slider = make_shared<Slider<float>>(0.5, 0, 1, 10, "t") };
+		return { b[0], b[1], b[2], b[3], t_slider = make_shared<Slider<float>>(0.5, 0, 1, 20, "t") };
 	}
 
 	void eachFrame(float dt) override {

@@ -57,7 +57,6 @@ public:
 	}
 
 	void drawYourself(olc::PixelGameEngine& screen, Transform& transform) override {
-		cout << "here\n";
 		for (float u = knotsU.front(); u <= knotsU.back(); u += 1 / 8.0) {
 			auto A = evaluate(u, 0);
 			auto B = A;
@@ -66,9 +65,7 @@ public:
 				A = evaluate(u, t);
 				screen.DrawLine(transform.WorldToScreen(A), transform.WorldToScreen(B), color);
 			}
-
 		}
-		cout << "there\n";
 		for (float v = knotsV.front(); v <= knotsV.back(); v += 1 / 8.0) {
 			auto A = evaluate(0, v);
 			auto B = A;
@@ -77,9 +74,7 @@ public:
 				A = evaluate(t, v);
 				screen.DrawLine(transform.WorldToScreen(A), transform.WorldToScreen(B), color2);
 			}
-
 		}
-		cout << "where\n";
 	}
 
 	olc::vf3d evaluate(float u, float v) {
