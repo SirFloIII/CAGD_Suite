@@ -134,18 +134,20 @@ class BSP_4_32 : public ExerciseProblem
 {
 private:
 	SliderFloatPtr t_slider;
+	SliderIntPtr iters;
 	vector<NURBSPtr> b;
 public:
 	vector<GeometryObjPtr> doSetup() override {
 		description = "\
-                                                                               \n\n\
-def LaneRiesenfeld(polygon: list[Point], ratio: float = 0.5) -> list[Point]:   \n\n\
-    out = []                                                                   \n\n\
-    for A, B in zip(polygon, polygon[1:] + polygon[:1]):                       \n\n\
-        out.append(A)                                                          \n\n\
-        out.append((1-ratio) * A + ratio * B)                                  \n\n\
-    return [(1-ratio) * A + ratio * B for A, B in zip(out, out[1:]+out[:1])]   \n\n\
-                                                                               \n\n\
+                                                                                        \n\n\
+def LaneRiesenfeld(polygon: list[Point],k: int = 2, ratio: float = 0.5) -> list[Point]: \n\n\
+    out = []                                                                            \n\n\
+    for A, B in zip(polygon, polygon[1:]+polygon[:1]):                                  \n\n\
+        out.append(A)                                                                   \n\n\
+        out.append((1-ratio) * A + ratio * B)                                               \n\n\
+    for _ in range(k):                                                                  \n\n\
+        out = [(1-ratio) * A + ratio * B for A, B in zip(out, out[1:]+out[:1])]             \n\n\
+    return out                                                                          \n\n\
 ";
 
 		vector<olc::Pixel> colors = { olc::WHITE,
@@ -170,7 +172,7 @@ def LaneRiesenfeld(polygon: list[Point], ratio: float = 0.5) -> list[Point]:   \
 			if (j != 0) b[j]->color = colors[j];
 		}
 
-		return { b[0], b[1], b[2], b[3], t_slider = make_shared<Slider<float>>(0.5, 0, 1, 20, "t") };
+		return { b[0], b[1], b[2], b[3], t_slider = make_shared<Slider<float>>(0.5, 0, 1, 24, "t"), iters = make_shared<Slider<int>>(2, 1, 6, 28, "i") };
 	}
 
 	void eachFrame(float dt) override {
@@ -184,11 +186,13 @@ def LaneRiesenfeld(polygon: list[Point], ratio: float = 0.5) -> list[Point]:   \
 				h1[2 * i]->pos = h[i]->pos;
 				h1[2 * i + 1]->pos = h[i]->pos * t + h[i + 1]->pos * (1 - t);
 			}
-			auto first_pos = h1[0]->pos;
-			for (size_t i = 0; i < h1.size() - 2; i++) {
-				h1[i]->pos = h1[i]->pos * (1 - t) + h1[i + 1]->pos * t;
+			for (size_t j = 0; j < iters->value; j++) {
+				auto first_pos = h1[0]->pos;
+				for (size_t i = 0; i < h1.size() - 2; i++) {
+					h1[i]->pos = h1[i]->pos * (1 - t) + h1[i + 1]->pos * t;
+				}
+				h1[h1.size()-2]->pos = h1[h1.size() - 2]->pos * (1 - t) + first_pos * t;
 			}
-			h1[h1.size()-2]->pos = h1[h1.size() - 2]->pos * (1 - t) + first_pos * t;
 		}
 
 	}
