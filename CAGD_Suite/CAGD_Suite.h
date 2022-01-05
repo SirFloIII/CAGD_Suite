@@ -5,6 +5,7 @@
 #include "GeometryObject.h"
 
 #include "ExerciseProblem.h"
+#include "ExerciseCollection.h"
 
 #include "Transform.h"
 
@@ -43,6 +44,7 @@ public:
 	void UpdateCamera();
 	void RenderBackground();
 
+	ExerciseProblem* getExerciseByID(int id);
 	void CreateMenu();
 	void UpdateMenu();
 

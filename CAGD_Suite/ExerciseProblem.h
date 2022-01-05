@@ -19,7 +19,7 @@ public:
 	virtual void eachFrame(float dt) {}
 	
 #define on(key) \
-	virtual void on##key##(float dt) {} \
+	virtual void on##key(float dt) {} \
 	virtual void on##key##Held(float dt) {}
 	
 	interactive_keys

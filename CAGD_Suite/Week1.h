@@ -111,7 +111,7 @@ Symmetrie der Bernstein-Polynome:        \n\
 		};
 	}
 
-	void eachFrame(float dt) {
+	void eachFrame(float dt) override {
 		i->setMax(n->value);
 		f->n = n->value;
 		g->n = n->value;
@@ -158,7 +158,7 @@ Maxima der Bernstein-Polynome:        \n\
 		};
 	}
 
-	void eachFrame(float dt) {
+	void eachFrame(float dt) override {
 		i->setMax(n->value);
 		f->n = n->value;
 		f->i = i->value;

@@ -29,7 +29,7 @@ def Factorial(k):                                                      \n\
 		};
 	}
 
-	void eachFrame(float dt) {
+	void eachFrame(float dt) override {
 		i->setMax(n->value);
 		f->n = n->value;
 		f->i = i->value;

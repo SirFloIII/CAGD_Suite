@@ -1,5 +1,4 @@
 #pragma once
-#include <math.h>
 #include "olcPixelGameEngine.h"
 #include <vector>
 
