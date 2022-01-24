@@ -50,6 +50,8 @@ ExerciseProblem* CAGD_Suite::getExerciseByID(int id) {
 		return new BSP_5_38();
 	case(39):
 		return new BSP_5_39();
+	case(40):
+		return new BSP_6_40();
 	default:
 		return nullptr;
 	}
@@ -67,7 +69,7 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week  3"].SetTable(1, 10);
 	mo["main"]["Week  4"].SetTable(1, 10);
 	mo["main"]["Week  5"].SetTable(1, 10);
-	mo["main"]["Week  6"].SetTable(1, 10).Enable(false);
+	mo["main"]["Week  6"].SetTable(1, 10);
 	mo["main"]["Week  7"].SetTable(1, 10).Enable(false);
 	mo["main"]["Week  8"].SetTable(1, 10).Enable(false);
 	mo["main"]["Week  9"].SetTable(1, 10).Enable(false);
@@ -111,15 +113,11 @@ void CAGD_Suite::CreateMenu() {
 	mo["main"]["Week  5"]["Exercise 37"].SetID(37);
 	mo["main"]["Week  5"]["Exercise 38"].SetID(38);
 	mo["main"]["Week  5"]["Exercise 39"].SetID(39);
-	mo["main"]["Week  6"]["Exercise 1"].SetID(601).Enable(false);
-	mo["main"]["Week  6"]["Exercise 2"].SetID(602).Enable(false);
-	mo["main"]["Week  6"]["Exercise 3"].SetID(603).Enable(false);
-	mo["main"]["Week  6"]["Exercise 4"].SetID(604).Enable(false);
-	mo["main"]["Week  6"]["Exercise 5"].SetID(605).Enable(false);
-	mo["main"]["Week  6"]["Exercise 6"].SetID(606).Enable(false);
-	mo["main"]["Week  6"]["Exercise 7"].SetID(607).Enable(false);
-	mo["main"]["Week  6"]["Exercise 8"].SetID(608).Enable(false);
-	mo["main"]["Week  6"]["Exercise 9"].SetID(609).Enable(false);
+	mo["main"]["Week  6"]["Exercise 40"].SetID(40);
+	mo["main"]["Week  6"]["Exercise 41"].SetID(41).Enable(false);
+	mo["main"]["Week  6"]["Exercise 42"].SetID(42).Enable(false);
+	mo["main"]["Week  6"]["Exercise 43"].SetID(43).Enable(false);
+	mo["main"]["Week  6"]["Exercise 44"].SetID(44).Enable(false);
 	mo["main"]["Week  7"]["Exercise 1"].SetID(701).Enable(false);
 	mo["main"]["Week  7"]["Exercise 2"].SetID(702).Enable(false);
 	mo["main"]["Week  7"]["Exercise 3"].SetID(703).Enable(false);
